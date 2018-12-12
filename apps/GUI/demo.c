@@ -174,25 +174,25 @@ int main(int argc, char **argv)
 
   //Wait for the user to indicate how many steps to move
   while(1) {
-      printf("Enter decode card : ");
+      printf("\n\n********************************\nEnter decode card : ");
       fgets(response, 79,stdin);
-      decode(repsonse);
-  }
-
-
-  return 0;
-}
-
-int decode(char * string) {
+	printf("\n********************************\n");
     int buttonsVal;
     char code[5];
 
-
+    int card = 11;
     for(int i = 0; i < 11; i++) {
-          for(int j = 0; j < 4; j++) {
-         if (string[j] != cardDefinitions[i].code[j]) break;
-         else if (j == 3) return i;
-    }
+        	  for(int j = 0; j < 4; j++) {
+		         if (response[j] != cardDefinitions[i].code[j]) {
+				card = i;
+				break;
+			
+			}
+         		else if (j == 3) return i;
+    		}
 
-    system(cardDefinitions[i].mpv_inst);
+	}
+    system(cardDefinitions[card].mpv_inst);
+
+  }
 }
